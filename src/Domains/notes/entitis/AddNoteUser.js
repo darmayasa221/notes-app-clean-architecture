@@ -20,7 +20,7 @@ class AddNoteUser {
     if (!title || !body || !tags) {
       throw new Error('ADD_NOTE_USER.NOT_CONTAIN_NEEDED_PROPERTY');
     }
-    if (typeof title !== 'string' || typeof body !== 'string' || typeof tags !== 'string') {
+    if (typeof title !== 'string' || typeof body !== 'string' || !Array.isArray(tags)) {
       throw new Error('ADD_NOTE_USER.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
   }

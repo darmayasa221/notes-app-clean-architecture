@@ -15,7 +15,7 @@ describe('A NewNoteUser Entities', () => {
     const payload = {
       id: '123',
       title: 123,
-      tags: 'notes',
+      tags: ['notes'],
       body: 'note test',
       createdAt: new Date().toISOString(),
       updatedAt: '-',
@@ -28,7 +28,7 @@ describe('A NewNoteUser Entities', () => {
     const payload = {
       id: '123',
       title: 'note-123',
-      tags: 'notes',
+      tags: ['notes'],
       body: 'note test',
       createdAt: new Date().toISOString(),
       updatedAt: '-',

@@ -30,7 +30,7 @@ describe('DetailNoteUser Entities', () => {
       id: '123',
       title: 'note-123',
       body: 'note test',
-      tags: 'notes',
+      tags: ['notes'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };

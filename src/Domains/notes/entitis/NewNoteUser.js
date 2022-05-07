@@ -37,7 +37,7 @@ class NewNoteUser {
     if (
       typeof id !== 'string'
       || typeof title !== 'string'
-      || typeof tags !== 'string'
+      || !Array.isArray(tags)
       || typeof body !== 'string'
       || typeof createdAt !== 'string'
     ) {

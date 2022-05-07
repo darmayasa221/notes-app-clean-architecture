@@ -5,7 +5,7 @@ describe('A AddNoteUser Entities', () => {
     // Arrange
     const payload = {
       title: 'test',
-      tags: 'ada',
+      tags: ['ada'],
     };
     // Action and Assert
     expect(() => new AddNoteUser(payload)).toThrowError('ADD_NOTE_USER.NOT_CONTAIN_NEEDED_PROPERTY');
@@ -14,7 +14,7 @@ describe('A AddNoteUser Entities', () => {
     // Arrange
     const payload = {
       title: 123,
-      tags: 'test',
+      tags: ['test'],
       body: 'test',
     };
     // Actiong and Assert
@@ -25,7 +25,7 @@ describe('A AddNoteUser Entities', () => {
     const payload = {
       title: 'first note',
       body: 'note body',
-      tags: 'notes tags',
+      tags: ['notes tags'],
     };
     // Acction
     const {

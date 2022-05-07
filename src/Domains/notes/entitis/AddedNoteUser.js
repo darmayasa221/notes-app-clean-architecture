@@ -1,4 +1,4 @@
-class DetailNoteUser {
+class AddedNoteUser {
   constructor(payload) {
     this._verifyPayload(payload);
 
@@ -7,15 +7,16 @@ class DetailNoteUser {
       title,
       body,
       tags,
-      createdAt,
-      updatedAt,
+      created_at,
+      updated_at,
     } = payload;
+
     this.id = id;
     this.title = title;
     this.body = body;
     this.tags = tags;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
+    this.created_at = created_at;
+    this.updated_at = updated_at;
   }
 
   _verifyPayload({
@@ -23,29 +24,29 @@ class DetailNoteUser {
     title,
     body,
     tags,
-    createdAt,
-    updatedAt,
+    created_at,
+    updated_at,
   }) {
     if (
       !id
       || !title
       || !body
       || !tags
-      || !createdAt
-      || !updatedAt) {
-      throw new Error('DETAIL_NOTE_USER.NOT_CONTAIN_NEEDED_PROPERTY');
+      || !created_at
+      || !updated_at) {
+      throw new Error('ADDED_NOTE_USER.NOT_CONTAIN_NEEDED_PROPERTY');
     }
     if (
       typeof id !== 'string'
       || typeof title !== 'string'
       || typeof body !== 'string'
       || !Array.isArray(tags)
-      || typeof createdAt !== 'string'
-      || typeof updatedAt !== 'string'
+      || typeof created_at !== 'string'
+      || typeof updated_at !== 'string'
     ) {
-      throw new Error('DETAIL_NOTE_USER.NOT_MEET_DATA_TYPE_SPECIFICATION');
+      throw new Error('ADDED_NOTE_USER.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
   }
 }
 
-module.exports = DetailNoteUser;
+module.exports = AddedNoteUser;

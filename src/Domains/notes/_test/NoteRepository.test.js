@@ -5,6 +5,7 @@ describe('NoteRepository Interface', () => {
     // Arrange
     const noteRepository = new NoteRepository();
     // Acction and Assert
+    expect(noteRepository).toHaveProperty('verifyAvailableNoteId');
     expect(noteRepository).toHaveProperty('addNote');
     expect(noteRepository).toHaveProperty('editNote');
     expect(noteRepository).toHaveProperty('deleteNote');
@@ -13,8 +14,9 @@ describe('NoteRepository Interface', () => {
     // Arrange
     const noteRepository = new NoteRepository();
     // Action adn Assert
+    await expect(noteRepository.verifyAvailableNoteId('')).rejects.toThrowError('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
     await expect(noteRepository.addNote({})).rejects.toThrowError('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
-    await expect(noteRepository.editNote({})).rejects.toThrowError('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
+    await expect(noteRepository.editNote('', {})).rejects.toThrowError('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
     await expect(noteRepository.deleteNote('')).rejects.toThrowError('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
   });
 });

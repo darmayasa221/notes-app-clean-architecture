@@ -1,9 +1,13 @@
 class NoteRepository {
+  async verifyAvailableNoteId(id) {
+    throw new Error('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
+  }
+
   async addNote(payload) {
     throw new Error('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
   }
 
-  async editNote(payload) {
+  async editNote(param, payload) {
     throw new Error('NOTE_REPOSITORY.METHOD_NOT_IMPLEMENTED');
   }
 

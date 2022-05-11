@@ -12,6 +12,8 @@ const NoteRepositoryPostgres = require('./repository/NoteRepositoryPostgres');
 // use case
 const AddNoteUseCase = require('../Applications/use_case/AddNoteUseCase');
 const NoteRepository = require('../Domains/notes/NoteRepository');
+const EditNoteUseCase = require('../Applications/use_case/EditNoteUseCase');
+const DeleteNoteUseCase = require('../Applications/use_case/DeleteNoteUseCase');
 
 // creating container
 
@@ -42,6 +44,32 @@ container.register([
   {
     key: AddNoteUseCase.name,
     Class: AddNoteUseCase,
+    parameter: {
+      injectType: 'destructuring',
+      dependencies: [
+        {
+          name: 'noteRepository',
+          internal: NoteRepository.name,
+        },
+      ],
+    },
+  },
+  {
+    key: EditNoteUseCase.name,
+    Class: EditNoteUseCase,
+    parameter: {
+      injectType: 'destructuring',
+      dependencies: [
+        {
+          name: 'noteRepository',
+          internal: NoteRepository.name,
+        },
+      ],
+    },
+  },
+  {
+    key: DeleteNoteUseCase.name,
+    Class: DeleteNoteUseCase,
     parameter: {
       injectType: 'destructuring',
       dependencies: [

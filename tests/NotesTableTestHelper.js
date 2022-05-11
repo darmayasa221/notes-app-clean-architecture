@@ -47,7 +47,7 @@ const NotesTableTestHelper = {
     const query = {
       text: `UPDATE notes 
       SET title = $1, tags = $2, body = $3, "updated_at" = $4
-      WHERE id = $5`,
+      WHERE id = $5 RETURNING *`,
       values: [title, tags, body, updated_at, id],
     };
 

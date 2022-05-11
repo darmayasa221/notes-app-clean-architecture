@@ -1,3 +1,4 @@
+const InvariantError = require('../../Commons/exceptions/InvariantError');
 const AddedNoteUser = require('../../Domains/notes/entitis/AddedNoteUser');
 const NoteRepository = require('../../Domains/notes/NoteRepository');
 
@@ -24,6 +25,45 @@ class NoteRepositoryPostgres extends NoteRepository {
 
     const { rows } = await this._pool.query(query);
     return new AddedNoteUser(rows[0]);
+  }
+
+  async editNote(id, payload) {
+    const {
+      title,
+      body,
+      tags,
+      updatedAt,
+    } = payload;
+
+    const query = {
+      text: `UPDATE notes
+      SET title = $1, tags = $2, body = $3, "updated_at" = $4
+      WHERE id = $5 `,
+      values: [title, tags, body, updatedAt, id],
+    };
+    await this._pool.query(query);
+  }
+
+  async deleteNote(id) {
+    const query = {
+      text: `DELETE FROM notes
+      WHERE id = $1`,
+      values: [id],
+    };
+
+    await this._pool.query(query);
+  }
+
+  async verifyAvailableNoteId(id) {
+    const query = {
+      text: `SELECT * FROM notes
+      WHERE id = $1`,
+      values: [id],
+    };
+    const { rowCount } = await this._pool.query(query);
+    if (!rowCount) {
+      throw new InvariantError('can\'t find id notes at database');
+    }
   }
 }
 

@@ -5,8 +5,8 @@ class DeleteNoteUseCase {
 
   async execute(params) {
     this._verifyAvailableNoteId(params);
-    this._noteRepository.verifyAvailableNoteId(params);
-    this._noteRepository.deleteNote(params);
+    await this._noteRepository.verifyAvailableNoteId(params);
+    await this._noteRepository.deleteNote(params);
   }
 
   _verifyAvailableNoteId(id) {
